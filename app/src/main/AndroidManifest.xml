@@ -11,6 +11,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TuniWwayAndroid">
+
+        <activity android:name=".explore.DestinationDetailActivity" />
+        <activity android:name=".explore.ExploreActivity" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -20,6 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>
