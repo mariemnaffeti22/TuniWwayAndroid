@@ -17,7 +17,8 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 // Note : LoginActivity n'existe pas encore, donc cela va surligner en rouge.
                 // C'est normal ! Nous la créerons dans la tâche suivante.
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class); // Temporairement MainActivity
+                // Dans SplashActivity.java, remplacez MainActivity.class par LoginActivity.class
+                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish(); // Empêche l'utilisateur de revenir sur le splash
             }
