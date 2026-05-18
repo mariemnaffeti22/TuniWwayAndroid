@@ -22,7 +22,17 @@
         android:textStyle="bold"
         android:textColor="#1A237E"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="12dp"/>
+        android:layout_marginTop="12dp"/>
+
+    <Button
+        android:id="@+id/btnExplore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🗺️ Explorer les Destinations"
+        android:backgroundTint="#1976D2"
+        android:textColor="#FFFFFF"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTours"

@@ -1,8 +1,10 @@
 package com.example.tuniwwayandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,11 +32,18 @@ public class ToursActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        // 2. RecyclerView
+        // 2. Bouton Explorer → travail d'Eya
+        Button btnExplore = findViewById(R.id.btnExplore);
+        btnExplore.setOnClickListener(v -> {
+            Intent intent = new Intent(this, com.example.tuniwwayandroid.explore.ExploreActivity.class);
+            startActivity(intent);
+        });
+
+        // 3. RecyclerView
         recyclerViewTours = findViewById(R.id.recyclerViewTours);
         recyclerViewTours.setLayoutManager(new LinearLayoutManager(this));
 
-        // 3. Données avec images
+        // 4. Données avec images
         tourList = new ArrayList<>();
         tourList.add(new Tour("Bizerte", "14/06/2026", 150.0, "Ahmed Ben Ali", R.drawable.bizerte));
         tourList.add(new Tour("Sidi Bou Said", "20/06/2026", 200.0, "Fatma Trabelsi", R.drawable.sidibou));
@@ -42,11 +51,11 @@ public class ToursActivity extends AppCompatActivity {
         tourList.add(new Tour("Tozeur", "01/07/2026", 400.0, "Leila Mansour", R.drawable.touzeur));
         tourList.add(new Tour("Sousse", "05/07/2026", 180.0, "Karim Bouazizi", R.drawable.sousse));
 
-        // 4. Adapter
+        // 5. Adapter
         tourAdapter = new TourAdapter(tourList);
         recyclerViewTours.setAdapter(tourAdapter);
 
-        // 5. Charger les taux de conversion
+        // 6. Charger les taux de conversion
         loadConversionRates();
     }
 
@@ -55,18 +64,13 @@ public class ToursActivity extends AppCompatActivity {
         Call<ExchangeResponse> call = apiService.getConversionRates("d7c9bb6990939f577094162d");
 
         call.enqueue(new Callback<ExchangeResponse>() {
-            // Dans la méthode onResponse de ToursActivity :
             @Override
             public void onResponse(Call<ExchangeResponse> call, Response<ExchangeResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     double taux = response.body().getConversionRates().getUsd();
-
-                    // Mettre à jour chaque tour avec son prix en USD
                     for (Tour t : tourList) {
                         t.setPrixUsd(t.getPrix() * taux);
                     }
-
-                    // Rafraîchir l'affichage
                     tourAdapter.notifyDataSetChanged();
                     Toast.makeText(ToursActivity.this, "Prix convertis en USD !", Toast.LENGTH_SHORT).show();
                 }
