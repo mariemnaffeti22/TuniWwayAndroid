@@ -1,37 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center">
+    android:background="#F5F5F5">
 
-    <EditText
-        android:id="@+id/etEmailLogin"
+    <!-- Header bleu -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#1976D2">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/logo"
+            android:scaleType="fitCenter"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TuniWway"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Explorez la Tunisie"
+            android:textSize="14sp"
+            android:textColor="#E3F2FD"/>
+
+    </LinearLayout>
+
+    <!-- Carte formulaire -->
+    <androidx.cardview.widget.CardView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:layout_margin="24dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
 
-    <EditText
-        android:id="@+id/etPasswordLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Mot de passe"
-        android:inputType="textPassword" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:background="#FFFFFF">
 
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Se connecter"
-        android:layout_marginTop="20dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Connexion"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="#1A237E"
+                android:layout_marginBottom="20dp"/>
 
-    <TextView
-        android:id="@+id/tvRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pas de compte ? S'inscrire ici"
-        android:layout_marginTop="15dp" />
+            <EditText
+                android:id="@+id/etEmailLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:textColorHint="#1976D2"
+                android:textColor="#000000"
+                android:inputType="textEmailAddress"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:layout_marginBottom="12dp"/>
+
+            <EditText
+                android:id="@+id/etPasswordLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mot de passe"
+                android:textColorHint="#1976D2"
+                android:textColor="#000000"
+                android:inputType="textPassword"
+                android:background="@drawable/edittext_bg"
+                android:padding="12dp"
+                android:layout_marginBottom="20dp"/>
+
+            <Button
+                android:id="@+id/btnLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Se connecter"
+                android:backgroundTint="#1976D2"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:padding="12dp"/>
+
+            <TextView
+                android:id="@+id/tvRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pas de compte ? S'inscrire"
+                android:textColor="#1976D2"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:padding="8dp"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </LinearLayout>
