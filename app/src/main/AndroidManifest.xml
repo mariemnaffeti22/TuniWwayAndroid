@@ -16,7 +16,9 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
+                <activity android:name=".admin.AdminActivity" />
+                <activity android:name=".explore.DestinationDetailActivity" />
+                <activity android:name=".explore.ExploreActivity" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

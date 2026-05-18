@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Espace Admin"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:textColor="#00897B"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:id="@+id/txtClientsCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Clients : 0"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/txtGuidesCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guides : 0"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/txtToursCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tours : 0"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:padding="12dp" />
+
+        <TextView
+            android:id="@+id/txtCategoriesCount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Catégories : 0"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:padding="12dp"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btnAddCategory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ajouter une catégorie" />
+
+        <TextView
+            android:id="@+id/txtCategoriesList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Liste des catégories :"
+            android:textSize="18sp"
+            android:textColor="#000000"
+            android:layout_marginTop="20dp"
+            android:padding="12dp" />
+
+    </LinearLayout>
+
+</ScrollView>
