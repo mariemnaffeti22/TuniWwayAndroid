@@ -11,6 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ToursActivity extends AppCompatActivity {
 
@@ -39,9 +42,43 @@ public class ToursActivity extends AppCompatActivity {
         tourList.add(new Tour("Tozeur", "01/07/2026", 400.0, "Leila Mansour", R.drawable.touzeur));
         tourList.add(new Tour("Sousse", "05/07/2026", 180.0, "Karim Bouazizi", R.drawable.sousse));
 
-        // 4. Adapter ← C'était manquant !
+        // 4. Adapter
         tourAdapter = new TourAdapter(tourList);
         recyclerViewTours.setAdapter(tourAdapter);
+
+        // 5. Charger les taux de conversion
+        loadConversionRates();
+    }
+
+    private void loadConversionRates() {
+        ApiService apiService = ApiClient.getApiService();
+        Call<ExchangeResponse> call = apiService.getConversionRates("d7c9bb6990939f577094162d");
+
+        call.enqueue(new Callback<ExchangeResponse>() {
+            // Dans la méthode onResponse de ToursActivity :
+            @Override
+            public void onResponse(Call<ExchangeResponse> call, Response<ExchangeResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    double taux = response.body().getConversionRates().getUsd();
+
+                    // Mettre à jour chaque tour avec son prix en USD
+                    for (Tour t : tourList) {
+                        t.setPrixUsd(t.getPrix() * taux);
+                    }
+
+                    // Rafraîchir l'affichage
+                    tourAdapter.notifyDataSetChanged();
+                    Toast.makeText(ToursActivity.this, "Prix convertis en USD !", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ExchangeResponse> call, Throwable t) {
+                Toast.makeText(ToursActivity.this,
+                        "Erreur API : " + t.getMessage(),
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

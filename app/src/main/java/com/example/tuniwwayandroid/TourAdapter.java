@@ -33,15 +33,16 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.TourViewHolder
         holder.tvDate.setText("📅 " + tour.getDate());
         holder.tvPrix.setText(tour.getPrix() + " TND");
         holder.tvNomGuide.setText("👤 " + tour.getNomGuide());
-
-        // Charger l'image
-
-
         holder.imgTour.setImageResource(tour.getImageRes());
 
-        // Clic sur un item → remet le prix à 0
+        // Logique du clic : basculer entre TND et USD
         holder.itemView.setOnClickListener(v -> {
-            holder.tvPrix.setText("0.0 TND");
+            String currentText = holder.tvPrix.getText().toString();
+            if (currentText.contains("TND") && tour.getPrixUsd() != -1) {
+                holder.tvPrix.setText(String.format("%.2f USD", tour.getPrixUsd()));
+            } else {
+                holder.tvPrix.setText(tour.getPrix() + " TND");
+            }
         });
     }
 

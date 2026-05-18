@@ -1,12 +1,10 @@
 package com.example.tuniwwayandroid;
 
 public class Tour {
-
-    private String destination;
-    private String date;
-    private double prix;
-    private String nomGuide;
+    private String destination, date, nomGuide;
+    private double prix; // Prix en TND
     private int imageRes;
+    private double prixUsd = -1; // -1 signifie non calculé
 
     public Tour(String destination, String date, double prix, String nomGuide, int imageRes) {
         this.destination = destination;
@@ -21,4 +19,6 @@ public class Tour {
     public double getPrix() { return prix; }
     public String getNomGuide() { return nomGuide; }
     public int getImageRes() { return imageRes; }
+    public double getPrixUsd() { return prixUsd; }
+    public void setPrixUsd(double prixUsd) { this.prixUsd = prixUsd; }
 }
